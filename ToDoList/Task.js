@@ -1,6 +1,6 @@
 import React from "react";
 import {View, Text, Button,TextInput, StyleSheet, CheckBox} from 'react-native';
-import { Icon } from "@react-native-material/core";
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 
 
@@ -43,10 +43,10 @@ class Task extends React.Component {
                 {checked}
                 <Text style={styles.date}>{this.props.date}</Text>
                 <Text style={styles.content}> {this.props.content}</Text>
-                <Button onPress={() => this.move(-1)}><Icon name="chevron-up"/></Button>   
+                <FontAwesome.Button style={styles.button} name="arrow-up" size={20} color="black" onPress={() => this.move(-1)}></FontAwesome.Button>   
 
-                <Button onPress={() => this.move(1)}><Icon name="chevron-down" size={20}/></Button>  
-                <Button onPress={() => this.binHandler(this.props.ID)}><Icon name="trash-bin-sharp" size={20}/></Button> 
+                <FontAwesome.Button style={styles.button} name="arrow-down" size={20} color="black" onPress={() => this.move(1)}></FontAwesome.Button>  
+                <FontAwesome.Button style={styles.button} name="trash" size={20} color="black" onPress={() => this.binHandler(this.props.ID)}></FontAwesome.Button> 
             </View>
       );
     }
@@ -82,7 +82,11 @@ const styles = StyleSheet.create({
     width: '60%',
     overflowWrap: 'break-word',
   },
+  button :{
+    backgroundColor: 'antiquewhite',
+    padding: '0.2em',
+    margin: '0em',
 }
-);
+});
 
   export default Task;
