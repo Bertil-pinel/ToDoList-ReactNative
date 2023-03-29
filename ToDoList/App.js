@@ -37,7 +37,7 @@ export default function App() {
                 Tasks={Tasks}
             />
 
-            <ScrollView className="tasks">
+            <ScrollView style={styles.scroll} className="tasks">
               
                     {TasksDisplay.length !== 0?TasksDisplay.map((item, index) => renderTask(index)):<li>Il n'y a aucune tâche correspondante.</li>}
                
@@ -45,11 +45,11 @@ export default function App() {
                 
 
             
-            {/* <Footer
+            <Footer
                 Tasks={Tasks}
                 setTasks={setTasks}
                 setTasksFilter={setTasksFilter}
-            /> */}
+            />
              
       <StatusBar style="auto" />
     </View>
@@ -60,9 +60,20 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'green',
+    width: '100vw',
+    height: '100vh',
+
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
+
+    backgroundColor: 'black',
+    overflow: 'hidden',
   },
+  scroll: {
+    width: '100vw',
+    height: 'auto',
+    overflowY: 'auto',
+  }
 });

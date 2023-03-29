@@ -17,22 +17,10 @@ class Header extends React.Component {
     render() {
       let count = this.taskCount();
 
-      //Couleur du text de progression
-      let color="";
-      if(this.props.Tasks.length !== 0){
-        if(count === this.props.Tasks.length){
-          color = 'lightgreen';
-        }
-        else{
-          color = 'white';
-
-        }
-      }
-
       return (
         <View style={styles.container} className="Header">
-            <Text>Hello Doer! </Text>
-            <Text className={color}>Task progression : {count} / {this.props.Tasks.length}</Text>
+            <Text style={[styles.text, styles.title]}>Hello Doer! </Text>
+            <Text style={styles.text}>Task progression : {count} / {this.props.Tasks.length}</Text>
         </View>
       );
     }
@@ -41,10 +29,22 @@ class Header extends React.Component {
     // React Native Styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: '10%',
+    width: '100vw',
+
+    display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+
+    marginBottom: '0',
   },
+  text :{
+    color: 'aliceblue'
+  },
+  title :{
+    fontSize: 40
+  }
 });
 
 

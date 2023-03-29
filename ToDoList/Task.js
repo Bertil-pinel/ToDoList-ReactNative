@@ -1,5 +1,6 @@
 import React from "react";
-import {View, Text, Button,TextInput, StyleSheet, FlatList} from 'react-native';
+import {View, Text, Button,TextInput, StyleSheet, CheckBox} from 'react-native';
+import { Icon } from "@react-native-material/core";
 
 
 
@@ -35,17 +36,17 @@ class Task extends React.Component {
     }
       
     render() {
-      let checked =  <TextInput type="checkbox"  onChange={() => this.onClickCheckHandler (this.props.ID)} checked={this.props.isChecked}></TextInput>; 
+      let checked =  <CheckBox  onValueChange={() => this.onClickCheckHandler (this.props.ID)} value={this.props.isChecked}></CheckBox>; 
      
       return (
             <View style={styles.container} id={this.props.id} className="task">
                 {checked}
-                <Text className="date">{this.props.date}</Text>
-                <Text className="content">{this.props.content}</Text>
-                <Button  title="Up" onPress={() => this.move(-1)}></Button>   
+                <Text style={styles.date}>{this.props.date}</Text>
+                <Text style={styles.content}> {this.props.content}</Text>
+                <Button onPress={() => this.move(-1)}><Icon name="chevron-up"/></Button>   
 
-                <Button title="Down" onPress={() => this.move(1)}></Button>  
-                <Button  title="Bin"onPress={() => this.binHandler(this.props.ID)}></Button> 
+                <Button onPress={() => this.move(1)}><Icon name="chevron-down" size={20}/></Button>  
+                <Button onPress={() => this.binHandler(this.props.ID)}><Icon name="trash-bin-sharp" size={20}/></Button> 
             </View>
       );
     }
@@ -55,10 +56,33 @@ class Task extends React.Component {
   // React Native Styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent:'flex-start',
     alignItems: 'center',
+    backgroundColor: 'antiquewhite',
+    color: 'rgb(0, 0, 20)',
+    marginTop:' 0.6em',
+    marginBottom:' 0.6em',
+    marginLeft:'0.5em',
+    marginRight:'0.5em',
+    padding:'0.7em',
+    borderRadius:'1em',
+  }, 
+  date: {
+    fontSize: 10,
+
+    paddingLeft: '0.5em',
+    paddingRight:' 1em',
+    color: 'gray'
+  }, 
+  content: {
+    color: 'black',
+    width: '60%',
+    overflowWrap: 'break-word',
   },
-});
+}
+);
 
   export default Task;

@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, TextInput, Button, StyleSheet} from 'react-native';
 
 
 function Footer(props){
@@ -37,15 +37,41 @@ function Footer(props){
       }
       
     } 
-            
-
+          
     return (
-      <div className="Footer">
-          <button onClick={addTask}><ion-icon name="add-circle-outline"></ion-icon></button>
-          <input type="text" placeholder="Filtrer..." onChange={searchTask}></input>
-      </div>
+      <View style={styles.container} className="Footer">
+          <Button style={styles.button} title="Add a Task" onPress={addTask}  ></Button>
+          <TextInput style={styles.input} type="text" placeholder="Filtrer..." onChange={searchTask}></TextInput>
+      </View>
     );
   }
+
+    // React Native Styles
+const styles = StyleSheet.create({
+  container: {
+    height: '10%',
+    width: '100vw',
+
+    display: 'flex',
+    flexDirection:' row',
+    alignItems: 'center',
+    justifyContent: 'space-around', 
+  },
+  button: {
+    backgroundColor: 'transparent',
+    border: 'none',
+    padding: '0.2em',
+    margin: '0',
+  },
+  input: {
+    height: '40%',
+
+    backgroundColor: 'antiquewhite',
+
+    border: 'none',
+    borderRadius: '0.5em',
+  },
+});
 
 
   export default Footer;
