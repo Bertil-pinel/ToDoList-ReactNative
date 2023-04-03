@@ -8,33 +8,23 @@ import { StyleSheet,ScrollView, Text, View } from 'react-native';
 
 export default function App() {
 
-  const baseURL="http://localhost:3000/Tasks" ;
+  const client = axios.create({ baseURL:"http://localhost:3000/Tasks" });
 
   const [Tasks, setTasks] = useState(null);
 
-  // client.put(JSON.stringify([
-  //     {"date": "10/12/2023","content": "Ma premiere tache", "isChecked" : false},
-  //     {"date": "10/12/2023","content": "Vaisselle", "isChecked" : false},
-  //     {"date" : "10/12/2023","content": "devoirs", "isChecked" : true},
-  //     {"date" : "10/12/1203","content": "GAMING","isChecked": true}] )).then((response) =>{setTasks(response.data)});
-    
   React.useEffect(() => {
-  axios.get(baseURL).then((response) => {setTasks(response.data);});
-  }, []); 
+    client.get().then((response) => {setTasks(response.data);});
+  }, []);   
 
   console.log(Tasks);
-  
+    
   const [tasksFilter, setTasksFilter] = useState("");
-  
-  if(Tasks!=null){  
-    const TasksDisplay = Tasks.filter(element => element.content.toUpperCase().includes(tasksFilter));
-
-    axios.put(baseURL,{date: "10/12/2023",content: "Ma gdsgdds tache", isChecked : false}).then((response) =>{setTasks(response.data)});
-  }
-
+    
+  // const TasksDisplay = Tasks.filter(element => element.content.toUpperCase().includes(tasksFilter));
+    
   const tasksModified = () =>{
     axios.put(baseURL,Tasks).then((response) =>{setTasks(response.data)});
-  }
+  } 
 
   const renderTask = (i) => {
     return (
@@ -68,9 +58,9 @@ export default function App() {
                 Tasks={Tasks}
                 setTasks={setTasks}
                 setTasksFilter={setTasksFilter}
-            />
+            /> */}
              
-      <StatusBar style="auto" /> */}
+      <StatusBar style="auto" />
     </View>
   );
 
