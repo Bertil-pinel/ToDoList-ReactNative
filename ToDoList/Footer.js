@@ -1,5 +1,6 @@
 import React from "react";
 import {View, TextInput, Button, StyleSheet} from 'react-native';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 
 function Footer(props){
@@ -40,7 +41,7 @@ function Footer(props){
           
     return (
       <View style={styles.container} className="Footer">
-          <Button style={styles.button} title="Add a Task" onPress={addTask}  ></Button>
+          <FontAwesome.Button style={styles.button} name="plus" size={20} onPress={addTask}  ></FontAwesome.Button>
           <TextInput style={styles.input} type="text" placeholder="Filtrer..." onChange={searchTask}></TextInput>
       </View>
     );
@@ -58,8 +59,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around', 
   },
   button: {
-    backgroundColor: 'transparent',
-    border: 'none',
+    backgroundColor: 'black',
+    border: '2px solid white',
     padding: '0.2em',
     margin: '0',
   },
